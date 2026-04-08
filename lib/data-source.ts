@@ -21,6 +21,8 @@ async function getDataSource(): Promise<DataSource> {
   if (global._dataSource?.isInitialized) {
     return global._dataSource;
   }
+  console.log("DB RUN");
+  
 
   await AppDataSource.initialize();
   global._dataSource = AppDataSource;
