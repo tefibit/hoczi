@@ -1,7 +1,9 @@
+'use client'
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
-  const name = "Le Van Khiem"
+  const [name, setName] = useState('')
 
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -45,13 +47,21 @@ export default function Home() {
         >
           <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-3xl" />
           <span className="relative text-white font-bold text-3xl tracking-tight font-serif">
-            JS<sup className="text-lg font-normal">?</sup>
+            Vics<sup className="text-lg font-normal"></sup>
           </span>
+        </div>
+        <div className="relative">
+          <input
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            placeholder="Enter your name"
+            className="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-white/50 focus:bg-white/15 transition-all duration-200"
+          />
         </div>
 
         {/* Title */}
         <h1 className="text-4xl md:text-5xl font-semibold text-white mb-5 tracking-tight">
-          {name} Questions
+          {"Hoczi.com"}
         </h1>
 
         {/* Subtitle */}
@@ -61,7 +71,7 @@ export default function Home() {
         </p>
 
         {/* Start button */}
-        <Link href={`/do-exercise`} className="w-80 max-w-full py-4 bg-white rounded-xl text-gray-900 font-medium text-lg hover:bg-gray-100 active:scale-95 transition-all duration-150">
+        <Link href={`/do-exercise?name=${name}`} className="w-80 max-w-full py-4 bg-white rounded-xl text-gray-900 font-medium text-lg hover:bg-gray-100 active:scale-95 transition-all duration-150">
           Start
         </Link>
       </div>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { questions } from "./data";
+import { useSearchParams } from 'next/navigation'
+
 
 function tokenize(line: string): { type: string; value: string }[] {
   const tokens: { type: string; value: string }[] = [];
@@ -128,6 +130,11 @@ function ScorePage({
   const score = questions.filter((q) => answers[q.id - 1] === q.answer).length;
   const pct = Math.round((score / total) * 100);
 
+
+    const searchParams = useSearchParams()
+  const name = searchParams.get('name')
+
+
   let message = "Keep practicing!";
   if (pct === 100) message = "Perfect score!";
   else if (pct >= 80) message = "Great job!";
@@ -142,7 +149,7 @@ function ScorePage({
           <p className="text-white font-bold" style={{ fontSize: "5rem", lineHeight: 1 }}>
             {score}<span className="text-white/40 text-4xl font-normal">/{total}</span>
           </p>
-          <p className="text-white/80 text-xl mt-3">{message}</p>
+          <p className="text-white/80 text-xl mt-3">{`Hi ${name}`} - {message}</p>
         </div>
 
         <div className="w-full bg-white rounded-xl overflow-hidden mb-8">
