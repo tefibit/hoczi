@@ -197,7 +197,7 @@ function ScorePage({
   );
 }
 
-export default function QuizPage() {
+export function QuizPage() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [finished, setFinished] = useState(false);
